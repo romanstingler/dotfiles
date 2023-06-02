@@ -1,0 +1,212 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 33,
+    "modules-left": [
+        "custom/launch",
+        "wlr/workspaces",
+        "custom/separator_r",
+        "cpu",
+        "temperature",
+        "memory",
+        "disk",
+        "disk#boot"
+    ],
+    "modules-center": [
+        "custom/separator_l",
+        "hyprland/window",
+        "custom/separator_r"
+    ],
+    "modules-right": [
+        "custom/separator_l",
+        "hyprland/language",
+        "network",
+        "battery",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "backlight",
+        "clock",
+        "custom/power_btn"
+    ],
+    "custom/launch": {
+        "format": "",
+        "on-click": "wofi -I --show drun",
+        "tooltip": false
+    },
+    "wlr/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        }
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10
+        // "on-click": "kitty --title btop sh -c 'btop'"
+    },
+    "temperature": {
+        "thermal-zone": 1,
+        "format": " {temperatureC}°C",
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "interval": 1
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "Memory - {used:0.1f} / {total:0.1f}GB used"
+        // "on-click": "kitty --title btop sh -c 'btop'"
+    },
+    "disk": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/",
+        "tooltip": true,
+        "tooltip-format": "Disk - {used} used out of {total} on {path} ({percentage_used}%)",
+        "on-click": "kitty --title btop sh -c 'btop'"
+    },
+    "disk#boot": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/mnt/83e6d57a-530b-4c50-a477-5172dbcf3f5d",
+        "tooltip": true,
+        "tooltip-format": "Disk - {used} used out of {total} on {path} ({percentage_used}%)",
+        "on-click": "kitty --title btop sh -c 'btop'"
+    },
+    "custom/separator_l": {
+        "format": ""
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 10
+    },
+    "custom/separator_r": {
+        "format": ""
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+    },
+    "network": {
+        "format": "{icon}",
+        "format-alt": "<span font='Font Awesome 5 Free 10'>︁</span> ︁{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-left",
+        "format-wifi": "<span font='Font Awesome 5 Free 10'></span> {essid} ({signalStrength}%)",
+        "format-ethernet": "<span font='Font Awesome 5 Free 10'>︁</span> {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "on-click": "pavucontrol",
+        "scroll-step": 5,
+        "max-volume": 200,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭",
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ],
+        "on-scroll-up": "sudo light -A 5",
+        "on-scroll-down": "sudo light -U 5"
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %B %d, %Y %R}",
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "custom/power_btn": {
+        "format": "",
+        "on-click": "~/.config/wlogout/exec",
+        "tooltip": false
+    }
+}
