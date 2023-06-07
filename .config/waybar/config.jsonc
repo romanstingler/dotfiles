@@ -28,6 +28,7 @@
         "battery",
         "pulseaudio",
         "pulseaudio#microphone",
+        "tray",
         "backlight",
         "clock",
         "custom/power_btn"
@@ -38,27 +39,15 @@
         "tooltip": false
     },
     "wlr/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "on-click": "activate",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": []
-        }
+        "all-outputs": false,
+        "sort-by-coordinates": false,
+        "sort-by-number": true,
+        "on-click": "activate"
     },
     "cpu": {
-        "interval": 10,
+        "interval": 1,
         "format": " {usage}%",
         "max-length": 10
-        // "on-click": "kitty --title btop sh -c 'btop'"
     },
     "temperature": {
         "thermal-zone": 1,
@@ -69,28 +58,25 @@
         "interval": 1
     },
     "memory": {
-        "interval": 30,
+        "interval": 1,
         "format": " {}%",
         "max-length": 10,
         "tooltip": true,
-        "tooltip-format": "Memory - {used:0.1f} / {total:0.1f}GB used"
-        // "on-click": "kitty --title btop sh -c 'btop'"
+        "tooltip-format": "Memory - {used:0.1f} / {total:0.1f}GiB"
     },
     "disk": {
         "interval": 30,
         "format": "󰋊 {percentage_used}%",
         "path": "/",
         "tooltip": true,
-        "tooltip-format": "Disk - {used} used out of {total} on {path} ({percentage_used}%)",
-        "on-click": "kitty --title btop sh -c 'btop'"
+        "tooltip-format": "Disk - {used} / {total} on {path} ({percentage_used}%)"
     },
     "disk#boot": {
         "interval": 30,
         "format": "󰋊 {percentage_used}%",
         "path": "/mnt/83e6d57a-530b-4c50-a477-5172dbcf3f5d",
         "tooltip": true,
-        "tooltip-format": "Disk - {used} used out of {total} on {path} ({percentage_used}%)",
-        "on-click": "kitty --title btop sh -c 'btop'"
+        "tooltip-format": "Disk - {used} / {total} on {path} ({percentage_used}%)"
     },
     "custom/separator_l": {
         "format": ""
@@ -114,7 +100,8 @@
         "format-wifi": "<span font='Font Awesome 5 Free 10'></span> {essid} ({signalStrength}%)",
         "format-ethernet": "<span font='Font Awesome 5 Free 10'>︁</span> {ifname}",
         "format-disconnected": "⚠ Disconnected",
-        "tooltip": false
+        "tooltip": false,
+        "interval": 1
     },
     "battery": {
         "states": {
@@ -167,6 +154,10 @@
         "on-click": "pavucontrol",
         "scroll-step": 5
     },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
@@ -179,9 +170,9 @@
         "on-scroll-down": "sudo light -U 5"
     },
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%A, %B %d, %Y %R}",
-        "tooltip-format": "{calendar}",
+        "format": "{:%H:%M} ",
+        "format-alt": "{:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
             "mode-mon-col": 3,
