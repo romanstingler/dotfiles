@@ -97,7 +97,7 @@
         "format": "{icon}",
         "format-alt": "<span font='Font Awesome 5 Free 10'>︁</span> ︁{ipaddr}/{cidr} {icon}",
         "format-alt-click": "click-left",
-        "format-wifi": "<span font='Font Awesome 5 Free 10'></span> {essid} ({signalStrength}%)",
+        "format-wifi": "<span font='Font Awesome 5 Free 10'></span> {essid} ({signalStrength}%) {frequency}",
         "format-ethernet": "<span font='Font Awesome 5 Free 10'>︁</span> {ifname}",
         "format-disconnected": "⚠ Disconnected",
         "tooltip": false,
@@ -170,7 +170,8 @@
         "on-scroll-down": "sudo light -U 5"
     },
     "clock": {
-        "format": "{:%H:%M} ",
+		"interval": 1,
+        "format": "{:%H:%M:%S} ",
         "format-alt": "{:%A, %B %d, %Y (%R)}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
