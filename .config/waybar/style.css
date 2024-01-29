@@ -116,7 +116,7 @@ tooltip {
 }
 
 #window {
-    min-width: 600px;
+    min-width: 800px;
 }
 
 #temperature.critical {
