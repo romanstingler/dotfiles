@@ -267,6 +267,9 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec mako
 exec wl-paste -t text --watch clipman store --no-persist
 
-#xwayland disable
+# xwayland disable
+# debug{
+#    overlay = true
+# }
 
 include /etc/sway/config.d/*

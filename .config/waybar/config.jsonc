@@ -146,8 +146,8 @@
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
     "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-scroll-up": "sudo light -A 5",
-    "on-scroll-down": "sudo light -U 5"
+    "on-scroll-up": "sudo xbacklight -inc 5 -perceived",
+    "on-scroll-down": "sudo xbacklight -dec 5 -perceived"
   },
   "clock": {
     "timezones": ["Europe/Vienna", "UTC"],
