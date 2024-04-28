@@ -83,7 +83,7 @@
   },
   "hyprland/window": {
     "format": "{}",
-    "max-length": 20
+    "max-length": 255
   },
   "custom/separator_r": {
     "format": ""
